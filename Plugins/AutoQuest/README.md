@@ -20,7 +20,7 @@ AutoQuest is a BetterDiscord plugin that automatically opens Discord’s **Disco
 - **Token:** Enter your Discord token so the plugin can enroll quests automatically.  
 
 ## How to Use
-1. Install the plugin in BetterDiscord.  
+1. Drag the plugin file (`AutoQuest.plugin.js`) into your BetterDiscord **plugins** folder.  
 2. Open Discord.  
 3. Wait a few seconds – AutoQuest will handle the rest.  
 4. Watch the console to see which quests are being completed.  
