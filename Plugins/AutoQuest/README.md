@@ -26,6 +26,6 @@ AutoQuest is a BetterDiscord plugin that automatically opens Discord’s **Disco
 4. Watch the console to see which quests are being completed.  
 
 ## Notes
-- Works in Discord Desktop app for certain quests.  
-- Some tasks may require the desktop app to fake “playing” or “streaming.”  
-- Automatically stops when all quests are completed.  
+- Works in the Discord Desktop app for certain quests.  
+- Some quests require user interaction and cannot be completed automatically.  
+- Automatically stops when all available quests are completed.  
