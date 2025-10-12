@@ -4,8 +4,8 @@
  * @version 1.0.0
  * @author killerqueen2007
  * @authorId 1035715649672052746
- * @website https://github.com/zerebos/BetterDiscordAddons/tree/master/Plugins/DoNotTrack
- * @source https://raw.githubusercontent.com/zerebos/BetterDiscordAddons/master/Plugins/DoNotTrack/DoNotTrack.plugin.js
+ * @website https://github.com/killerqueen2007/BetterDiscordAddons/tree/main/Plugins/AutoQuest
+ * @source https://github.com/killerqueen2007/BetterDiscordAddons/blob/main/Plugins/AutoQuest/AutoQuest.plugin.js
  */
 
 const defaultSettings = {
@@ -510,3 +510,4 @@ __defProp(AutoQuestOpener_exports, "default", { get: () => AutoQuestOpener });
 module.exports = __toCommonJS(AutoQuestOpener_exports);
 
 /*@end@*/
+
