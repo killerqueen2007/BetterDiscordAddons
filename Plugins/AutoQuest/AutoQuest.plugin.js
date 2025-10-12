@@ -5,7 +5,7 @@
  * @author killerqueen2007
  * @authorId 1035715649672052746
  * @website https://github.com/killerqueen2007/BetterDiscordAddons/tree/main/Plugins/AutoQuest
- * @source https://github.com/killerqueen2007/BetterDiscordAddons/blob/main/Plugins/AutoQuest/AutoQuest.plugin.js
+ * @source https://raw.githubusercontent.com/killerqueen2007/BetterDiscordAddons/refs/heads/main/Plugins/AutoQuest/AutoQuest.plugin.js
  */
 
 var __defProp = Object.defineProperty;
@@ -505,5 +505,6 @@ __defProp(AutoQuestOpener_exports, "default", { get: () => AutoQuestOpener });
 module.exports = __toCommonJS(AutoQuestOpener_exports);
 
 /*@end@*/
+
 
 
