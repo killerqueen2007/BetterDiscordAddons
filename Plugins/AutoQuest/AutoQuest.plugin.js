@@ -8,11 +8,6 @@
  * @source https://github.com/killerqueen2007/BetterDiscordAddons/blob/main/Plugins/AutoQuest/AutoQuest.plugin.js
  */
 
-const defaultSettings = {
-    enableAutoClick: true,
-    customDelay: 10
-};
-
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
@@ -510,4 +505,5 @@ __defProp(AutoQuestOpener_exports, "default", { get: () => AutoQuestOpener });
 module.exports = __toCommonJS(AutoQuestOpener_exports);
 
 /*@end@*/
+
 
