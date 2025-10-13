@@ -1,7 +1,7 @@
 /**
  * @name Questcord
  * @version 1.1.4
- * @description Hides specific elements in Discord to clean up the UI, with a toggle button (bottom-left corner) to unhide everything. Now also hides upload modals, DM headers, and all Discord popup/modals like "Create Your Server" or dialogs.
+ * @description Hides specific elements in Discord to clean up the UI, with a toggle button (bottom-left corner) to unhide everything.
  * @author killerqueen2007
  * @authorId 1035715649672052746
  * @website https://github.com/killerqueen2007/BetterDiscordAddons/tree/main/Plugins/Questcord
@@ -153,3 +153,4 @@ module.exports = class Questcord {
         document.querySelectorAll('svg').forEach(el => el.style.display = 'none');
     }
 };
+
