@@ -46,17 +46,9 @@ This plugin modifies Discord’s client interface and may break after Discord up
 Not affiliated with or endorsed by Discord.
 
 
-
-
-
-
-
-
-
-
-
-Hehe
+Hehe, looks amazing
 <img width="1919" height="1031" alt="image" src="https://github.com/user-attachments/assets/50a63bd5-b58a-473a-b2d1-88621a6653fc" />
+
 
 
 
