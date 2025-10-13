@@ -4,6 +4,8 @@
  * @description Hides specific elements in Discord to clean up the UI.
  * @author killerqueen2007
  * @authorId 1035715649672052746
+ * @website https://github.com/killerqueen2007/BetterDiscordAddons/tree/main/Plugins/Questcord
+ * @source https://raw.githubusercontent.com/killerqueen2007/BetterDiscordAddons/refs/heads/main/Plugins/Questcord/Questcord.plugin.js
  */
 
 module.exports = class Questcord {
