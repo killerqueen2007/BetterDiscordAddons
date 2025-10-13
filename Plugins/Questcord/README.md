@@ -17,8 +17,7 @@
 1. Download the plugin file:  
    [`Questcord.plugin.js`](https://raw.githubusercontent.com/killerqueen2007/BetterDiscordAddons/refs/heads/main/Plugins/Questcord/Questcord.plugin.js)
 2. Move it into your BetterDiscord plugins folder:  
-
-%appdata%\BetterDiscord\plugins
+   `C:\Users\<YourName>\AppData\Roaming\BetterDiscord\plugins`
 
 3. Restart Discord (or reload BetterDiscord).  
 4. Enable **Questcord** in the Plugins tab of BetterDiscord settings.  
@@ -45,3 +44,4 @@ It keeps your layout clean while ensuring performance remains unaffected.
 Use at your own risk.  
 This plugin modifies Discord’s client interface and may break after Discord updates.  
 Not affiliated with or endorsed by Discord.
+
