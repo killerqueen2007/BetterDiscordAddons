@@ -47,7 +47,9 @@ Not affiliated with or endorsed by Discord.
 
 
 Hehe, looks amazing
-<img width="1919" height="1031" alt="image" src="https://github.com/user-attachments/assets/50a63bd5-b58a-473a-b2d1-88621a6653fc" />
+<img width="1919" height="1031" alt="image" src="https://github.com/user-attachments/assets/b59df115-0370-44da-a4db-9a07dbe96f66" />
+
+
 
 
 
