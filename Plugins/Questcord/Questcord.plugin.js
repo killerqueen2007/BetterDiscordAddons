@@ -128,11 +128,7 @@ module.exports = class Questcord {
             '.container_eb2cd2',
             '.closeButton_c04f35',
             '.title_c04f35',
-            '.focusLock__49fc1',
-            '.root__49fc1',
-            '.rootWithShadow__49fc1',
             '.small__49fc1',
-            '.fullscreenOnMobile__49fc1',
             '.container__024d4',
             '.chat_f75fb0',
             '.scrim__40128',
@@ -140,7 +136,7 @@ module.exports = class Questcord {
             '.innerContainer_e1147e',
             '.container__89463',
             '.container__133bf',
-            '.standardSidebarView__23e6b'
+            '.standardSidebarView__23e6b',
         ];
 
         selectorsToHide.forEach(sel => {
@@ -153,4 +149,3 @@ module.exports = class Questcord {
         document.querySelectorAll('svg').forEach(el => el.style.display = 'none');
     }
 };
-
