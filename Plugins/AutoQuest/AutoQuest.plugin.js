@@ -119,7 +119,7 @@ class AutoQuestOpener extends Plugin {
         const isVisible = button.offsetParent !== null;
         const isDone = tile.querySelector('.completionAnimation__956c6, .confetti__956c6');
 
-        // Exclude started, ended, "Use Now", or "Explore the Shop" quests
+        // Quests to not look at
         const hasStarted =
             text.includes("Watch") ||
             text.includes("Quest Accepted") ||
@@ -134,7 +134,6 @@ class AutoQuestOpener extends Plugin {
 
 
     console.log(unstartedQuests);
-
 
     // Extract quest names and IDs
     const unstartedQuestInfo = unstartedQuests.map(tile => {
@@ -194,7 +193,6 @@ class AutoQuestOpener extends Plugin {
 
     // Enroll all unstarted quests
     unstartedQuestIDs.forEach(enrollQuest);
-
 
     delete window.$;
     let wpRequire = webpackChunkdiscord_app.push([[Symbol()], {}, r => r]);
