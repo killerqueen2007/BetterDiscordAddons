@@ -1,12 +1,13 @@
 /**
  * @name AutoQuest
  * @description Auto-Open Discord Discover & Complete Quests — Use at Your Own Risk
- * @version 1.0.0
+ * @version 1.0.1
  * @author killerqueen2007
  * @authorId 1035715649672052746
  * @website https://github.com/killerqueen2007/BetterDiscordAddons/tree/main/Plugins/AutoQuest
- * @source https://raw.githubusercontent.com/killerqueen2007/BetterDiscordAddons/refs/heads/main/Plugins/AutoQuest/AutoQuest.plugin.js
+ * @source https://github.com/killerqueen2007/BetterDiscordAddons/blob/main/Plugins/AutoQuest/AutoQuest.plugin.js
  */
+
 
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -151,21 +152,25 @@ class AutoQuestOpener extends Plugin {
     const unstartedQuestIDs = unstartedQuestInfo.map(q => q.id);
 
     // Function to enroll a quest
-    function enrollQuest(questID) {
+    const enrollQuest = (questID) => {
         const baseUrls = {
             Stable: "https://discord.com/api/v9/quests/",
             PTB: "https://ptb.discord.com/api/v9/quests/",
             Canary: "https://canary.discord.com/api/v9/quests/"
         };
 
-        const baseUrl = baseUrls[this.settings.appType || "Stable"];
+        // Capture plugin instance correctly
+        const appType = this?.settings?.appType || "Stable";
+        const token = this?.settings?.token || "";
+
+        const baseUrl = baseUrls[appType];
 
         fetch(`${baseUrl}${questID}/enroll`, {
             method: "POST",
             headers: {
                 "accept": "*/*",
                 "accept-language": "en-US",
-                "authorization": this.settings.token || "",
+                "authorization": token,
                 "content-type": "application/json",
                 "priority": "u=1, i",
                 "sec-ch-ua": "\"Not:A-Brand\";v=\"24\", \"Chromium\";v=\"134\"",
@@ -476,7 +481,7 @@ class AutoQuestOpener extends Plugin {
   runOnLoad() {
     // Step 1: Wait for Discover button
     this.waitForElement(
-      '[data-list-item-id="guildsnav___guild-discover-button"]',
+      '.wrapper__6e9f8',
       () => true,
       el => {
         this.log("Clicking Discover...");
@@ -485,7 +490,7 @@ class AutoQuestOpener extends Plugin {
         // Step 2: Wait for Quests tab after Discover loads
         setTimeout(() => {
           this.waitForElement(
-            ".navItem__551b0",
+            ".link__972a0",
             e => e.textContent.trim() === "Quests",
             questEl => {
               this.log("Clicking Quests...");
@@ -505,6 +510,4 @@ __defProp(AutoQuestOpener_exports, "default", { get: () => AutoQuestOpener });
 module.exports = __toCommonJS(AutoQuestOpener_exports);
 
 /*@end@*/
-
-
 
