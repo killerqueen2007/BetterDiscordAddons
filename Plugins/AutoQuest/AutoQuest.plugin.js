@@ -392,21 +392,6 @@ class AutoQuestOpener extends Plugin {
     })();
     })();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     // ------------------------------------------------------------
   }
 
@@ -501,11 +486,9 @@ class AutoQuestOpener extends Plugin {
   }
 }
 
-
 // Export after class is declared
 var AutoQuestOpener_exports = {};
 __defProp(AutoQuestOpener_exports, "default", { get: () => AutoQuestOpener });
 module.exports = __toCommonJS(AutoQuestOpener_exports);
 
 /*@end@*/
-
