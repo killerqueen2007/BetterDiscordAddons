@@ -1,10 +1,8 @@
 /**
  * @name Questcord
- * @version 1.1.4
- * @description Hides specific elements in Discord to clean up the UI, with a toggle button (bottom-left corner) to unhide everything.
+ * @version 1.1.6
+ * @description Hides specific elements in Discord and automatically opens Discover → Quests tab, then closes the popup — with a toggle button (bottom-left corner) to unhide everything.
  * @author killerqueen2007
- * @authorId 1035715649672052746
- * @website https://github.com/killerqueen2007/BetterDiscordAddons/tree/main/Plugins/Questcord
  * @source https://raw.githubusercontent.com/killerqueen2007/BetterDiscordAddons/refs/heads/main/Plugins/Questcord/Questcord.plugin.js
  */
 
@@ -18,6 +16,8 @@ module.exports = class Questcord {
     start() {
         this.addToggleButton();
         this.applyHiding();
+
+        this.runOnLoad();
 
         this.observer = new MutationObserver(() => {
             if (this.enabled) this.hideElements();
@@ -42,7 +42,68 @@ module.exports = class Questcord {
         console.log('%c[Questcord] Plugin stopped', 'color: #ff0000');
     }
 
-    // --- UI toggle button (bottom-left corner) ---
+    // --- Logging helper ---
+    log(msg) {
+        console.log(`[Questcord] ${msg}`);
+    }
+
+    // --- Simulate mouse click ---
+    simulateClick(el) {
+        el.dispatchEvent(new MouseEvent("mousedown", { bubbles: true }));
+        el.dispatchEvent(new MouseEvent("mouseup", { bubbles: true }));
+        el.click();
+    }
+
+    // --- Wait for element that matches condition ---
+    waitForElement(selector, condition, callback) {
+        const check = () => {
+            const els = document.querySelectorAll(selector);
+            for (const el of els) {
+                if (condition(el)) {
+                    callback(el);
+                    return;
+                }
+            }
+            requestAnimationFrame(check);
+        };
+        check();
+    }
+
+    // --- Auto open Quest page
+    runOnLoad() {
+
+        // Step 1: Click Close button first (if it exists)
+        this.waitForElement(
+            ".closeButton_c2b141",
+            () => true,
+            closeEl => {
+                this.log("Clicking Close first...");
+                this.simulateClick(closeEl);
+
+                // Step 2: Then click Discover
+                this.waitForElement(
+                    '.wrapper__6e9f8',
+                    () => true,
+                    el => {
+                        this.log("Clicking Discover...");
+                        this.simulateClick(el);
+
+                        // Step 3: Then click Quests
+                        this.waitForElement(
+                            ".link__972a0",
+                            e => e.textContent.trim() === "Quests",
+                            questEl => {
+                                this.log("Clicking Quests...");
+                                this.simulateClick(questEl);
+                            }
+                        );
+                    }
+                );
+            }
+        );
+    }
+
+    // --- UI toggle button ---
     addToggleButton() {
         this.toggleButton = document.createElement('button');
         this.toggleButton.innerText = 'Questcord: ON';
