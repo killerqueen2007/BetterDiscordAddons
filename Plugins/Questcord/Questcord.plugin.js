@@ -1,8 +1,11 @@
 /**
  * @name Questcord
- * @version 1.1.6
+ * @version 1.1.7
  * @description Hides specific elements in Discord - with a toggle button (bottom-left corner) to unhide everything.
  * @author killerqueen2007
+ * @authorId 1035715649672052746
+ * @website https://github.com/killerqueen2007/BetterDiscordAddons/tree/main/Plugins/Questcord
+ * @updateUrl https://raw.githubusercontent.com/killerqueen2007/BetterDiscordAddons/refs/heads/main/Plugins/AutoQuest/AutoQuest.plugin.js
  * @source https://raw.githubusercontent.com/killerqueen2007/BetterDiscordAddons/refs/heads/main/Plugins/Questcord/Questcord.plugin.js
  */
 
