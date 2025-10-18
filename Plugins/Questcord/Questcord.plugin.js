@@ -1,6 +1,6 @@
 /**
  * @name Questcord
- * @version 1.1.2
+ * @version 1.1.7
  * @description Hides specific elements in Discord - with a toggle button (bottom-left corner) to unhide everything.
  * @author killerqueen2007
  * @authorId 1035715649672052746
