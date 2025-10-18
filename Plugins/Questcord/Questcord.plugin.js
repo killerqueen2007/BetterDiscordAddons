@@ -1,7 +1,7 @@
 /**
  * @name Questcord
  * @version 1.1.6
- * @description Hides specific elements in Discord and automatically opens Quests tab - with a toggle button (bottom-left corner) to unhide everything.
+ * @description Hides specific elements in Discord - with a toggle button (bottom-left corner) to unhide everything.
  * @author killerqueen2007
  * @source https://raw.githubusercontent.com/killerqueen2007/BetterDiscordAddons/refs/heads/main/Plugins/Questcord/Questcord.plugin.js
  */
