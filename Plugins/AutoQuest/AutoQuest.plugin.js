@@ -471,16 +471,14 @@ class AutoQuestOpener extends Plugin {
         this.simulateClick(el);
 
         // Step 2: Wait for Quests tab after Discover loads
-        setTimeout(() => {
-          this.waitForElement(
-            ".link__972a0",
-            e => e.textContent.trim() === "Quests",
-            questEl => {
-              this.log("Clicking Quests...");
-              this.simulateClick(questEl);
-            }
-          );
-        }, 1000);
+        this.waitForElement(
+          ".link__972a0",
+          e => e.textContent.trim() === "Quests",
+          questEl => {
+            this.log("Clicking Quests...");
+            this.simulateClick(questEl);
+          }
+        );
       }
     );
   }
