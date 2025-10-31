@@ -431,20 +431,17 @@ class QuestMaster extends Plugin {
   onStop() {
     this.log("Plugin stopped.");
     
-    if (this.buttonCheckInterval) {
-        clearInterval(this.buttonCheckInterval);
-        this.buttonCheckInterval = null;
-    }
-    
     if (this.hidingObserver) {
         this.hidingObserver.disconnect();
         this.hidingObserver = null;
     }
     
-    if (this.toggleButton) {
-        this.toggleButton.remove();
-        this.toggleButton = null;
+    // Remove power button by class instead of stored reference
+    const powerBtn = document.querySelector('.togglePowerButton');
+    if (powerBtn) {
+        powerBtn.remove();
     }
+    this.toggleButton = null;
     
     this.showAll();
 
@@ -605,61 +602,70 @@ class QuestMaster extends Plugin {
     tabsContainer.appendChild(tabWrapper);
   }
 
+  // --- New Power Button Methods ---
   addPowerButton() {
-    this.buttonCheckInterval = setInterval(() => {
-      const inboxButton = document.querySelector('.clickable_c99c29.withHighlight_c99c29[aria-label="Inbox"]');
-      if (!inboxButton || document.querySelector('.togglePowerButton')) return;
+    const inboxButton = document.querySelector('.clickable_c99c29[aria-label="Inbox"]');
+    if (!inboxButton || document.querySelector('.togglePowerButton')) return;
+
+    // Create new button
+    const powerBtn = document.createElement('div');
+    powerBtn.className = inboxButton.className + ' togglePowerButton';
+    powerBtn.setAttribute('role', 'button');
+    powerBtn.setAttribute('tabindex', '0');
+    powerBtn.setAttribute('aria-label', 'Toggle UI Hiding');
+    powerBtn.style.cursor = 'pointer';
+
+    // Power icon SVG (Discord style)
+    powerBtn.innerHTML = `
+      <svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+        fill="none" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M12 2a1 1 0 0 1 1 1v8a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1Zm0 20a9 9 0 0 1-9-9 9 9 0 0 1 5-8.05 
+             1 1 0 0 1 .89 1.79A7 7 0 1 0 19 13a7 7 0 0 0-3.11-5.86 
+             1 1 0 1 1 1.13-1.64A9 9 0 0 1 12 22Z"/>
+      </svg>
+    `;
+
+    // Insert before Inbox
+    inboxButton.parentElement.insertBefore(powerBtn, inboxButton);
+
+    // Set initial state
+    powerBtn.style.color = this.hidingEnabled ? '#43b581' : '';
+    powerBtn.style.transform = this.hidingEnabled ? 'scale(1.1)' : '';
+    powerBtn.style.transition = 'all 0.2s ease';
+
+    // Add toggle behavior
+    powerBtn.addEventListener('click', () => {
+      this.hidingEnabled = !this.hidingEnabled;
+      this.settings.hidingEnabled = this.hidingEnabled;
+      this.saveSettings();
       
-      clearInterval(this.buttonCheckInterval);
-      this.buttonCheckInterval = null;
-
-      const powerBtn = document.createElement('div');
-      powerBtn.className = `${inboxButton.className} togglePowerButton`;
-      powerBtn.setAttribute('role', 'button');
-      powerBtn.setAttribute('tabindex', '0');
-      powerBtn.setAttribute('aria-label', 'Toggle UI Hiding');
-      powerBtn.style.cursor = 'pointer';
-
-      powerBtn.innerHTML = `
-        <svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
-          <path fill="currentColor" d="M12 2a1 1 0 0 1 1 1v8a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1Zm0 20a9 9 0 0 1-9-9 9 9 0 0 1 5-8.05 1 1 0 0 1 .89 1.79A7 7 0 1 0 19 13a7 7 0 0 0-3.11-5.86 1 1 0 1 1 1.13-1.64A9 9 0 0 1 12 22Z"/>
-        </svg>
-      `;
-
-      inboxButton.parentElement.insertBefore(powerBtn, inboxButton);
-
       powerBtn.style.color = this.hidingEnabled ? '#43b581' : '';
+      powerBtn.style.transform = this.hidingEnabled ? 'scale(1.1)' : '';
+      
+      console.log(`UI Hiding ${this.hidingEnabled ? 'ON' : 'OFF'}`);
+      this.log(`UI Hiding ${this.hidingEnabled ? 'enabled' : 'disabled'}`);
 
-      powerBtn.addEventListener('click', () => {
-        this.hidingEnabled = !this.hidingEnabled;
-        this.settings.hidingEnabled = this.hidingEnabled;
-        this.saveSettings();
-        
-        powerBtn.style.color = this.hidingEnabled ? '#43b581' : '';
-        console.log(`UI Hiding ${this.hidingEnabled ? 'ON' : 'OFF'}`);
-        this.log(`UI Hiding ${this.hidingEnabled ? 'enabled' : 'disabled'}`);
+      if (this.hidingEnabled) {
+        this.applyHiding();
+      } else {
+        this.showAll();
+      }
+    });
 
-        if (this.hidingEnabled) {
-          this.applyHiding();
-        } else {
-          this.showAll();
-        }
-      });
-
-      this.toggleButton = powerBtn;
-    }, 500);
+    this.toggleButton = powerBtn;
   }
 
   ensurePowerButton() {
-    if (this.toggleButton && !document.body.contains(this.toggleButton)) {
-      this.toggleButton = null;
-      this.addPowerButton();
-    }
+    // Try to add button if it doesn't exist
+    this.addPowerButton();
   }
 
   updatePowerButtonState() {
-    if (this.toggleButton) {
-      this.toggleButton.style.color = this.hidingEnabled ? '#43b581' : '';
+    const powerBtn = document.querySelector('.togglePowerButton');
+    if (powerBtn) {
+      powerBtn.style.color = this.hidingEnabled ? '#43b581' : '';
+      powerBtn.style.transform = this.hidingEnabled ? 'scale(1.1)' : '';
     }
   }
 
