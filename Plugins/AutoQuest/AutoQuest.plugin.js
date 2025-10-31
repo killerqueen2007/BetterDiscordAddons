@@ -1,5 +1,5 @@
 /**
- * @name QuestMaster
+ * @name AutoQuest
  * @description Automatically completes Discord quests and hides UI elements for a clean interface. Use at your own risk.
  * @version 1.3.0
  * @author killerqueen2007
@@ -25,9 +25,9 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 
 
 // Export
-var QuestMaster_exports = {};
-__defProp(QuestMaster_exports, "default", { get: () => QuestMaster });
-module.exports = __toCommonJS(QuestMaster_exports);
+var AutoQuest_exports = {};
+__defProp(AutoQuest_exports, "default", { get: () => AutoQuest });
+module.exports = __toCommonJS(AutoQuest_exports);
 
 // --- Plugin Base ---
 class Plugin {
@@ -52,7 +52,7 @@ class Plugin {
 // --- Manifest / Config ---
 const manifest = {
   info: {
-    name: "QuestMaster",
+    name: "AutoQuest",
     version: "1.3.0",
     description: "Automatically opens Discover and then Quests after Discord starts, and can hide UI elements.",
     authors: [{ name: "killerqueen2007" }]
@@ -94,7 +94,7 @@ const manifest = {
 };
 
 // --- Main Plugin ---
-class QuestMaster extends Plugin {
+class AutoQuest extends Plugin {
   constructor(meta) {
     super(meta, manifest);
     this.hidingEnabled = this.settings.hidingEnabled ?? true;
@@ -104,7 +104,7 @@ class QuestMaster extends Plugin {
   }
 
   getName() {
-    return "QuestMaster";
+    return "AutoQuest";
   }
 
   onStart() {
@@ -450,7 +450,7 @@ class QuestMaster extends Plugin {
   }
 
   log(...args) {
-    BdApi.Logger.info("QuestMaster", ...args);
+    BdApi.Logger.info("AutoQuest", ...args);
   }
 
   getSettingsPanel() {
@@ -687,8 +687,8 @@ class QuestMaster extends Plugin {
 }
 
 // Export after class is declared
-var QuestMaster_exports = {};
-__defProp(QuestMaster_exports, "default", { get: () => QuestMaster });
-module.exports = __toCommonJS(QuestMaster_exports);
+var AutoQuest_exports = {};
+__defProp(AutoQuest_exports, "default", { get: () => AutoQuest });
+module.exports = __toCommonJS(AutoQuest_exports);
 
 /*@end@*/
