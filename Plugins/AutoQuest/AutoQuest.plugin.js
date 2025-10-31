@@ -602,12 +602,10 @@ class QuestMaster extends Plugin {
     tabsContainer.appendChild(tabWrapper);
   }
 
-  // --- New Power Button Methods ---
   addPowerButton() {
     const inboxButton = document.querySelector('.clickable_c99c29[aria-label="Inbox"]');
     if (!inboxButton || document.querySelector('.togglePowerButton')) return;
 
-    // Create new button
     const powerBtn = document.createElement('div');
     powerBtn.className = inboxButton.className + ' togglePowerButton';
     powerBtn.setAttribute('role', 'button');
@@ -615,7 +613,6 @@ class QuestMaster extends Plugin {
     powerBtn.setAttribute('aria-label', 'Toggle UI Hiding');
     powerBtn.style.cursor = 'pointer';
 
-    // Power icon SVG (Discord style)
     powerBtn.innerHTML = `
       <svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
         fill="none" viewBox="0 0 24 24">
@@ -626,15 +623,12 @@ class QuestMaster extends Plugin {
       </svg>
     `;
 
-    // Insert before Inbox
     inboxButton.parentElement.insertBefore(powerBtn, inboxButton);
 
-    // Set initial state
     powerBtn.style.color = this.hidingEnabled ? '#43b581' : '';
     powerBtn.style.transform = this.hidingEnabled ? 'scale(1.1)' : '';
     powerBtn.style.transition = 'all 0.2s ease';
 
-    // Add toggle behavior
     powerBtn.addEventListener('click', () => {
       this.hidingEnabled = !this.hidingEnabled;
       this.settings.hidingEnabled = this.hidingEnabled;
@@ -657,7 +651,6 @@ class QuestMaster extends Plugin {
   }
 
   ensurePowerButton() {
-    // Try to add button if it doesn't exist
     this.addPowerButton();
   }
 
